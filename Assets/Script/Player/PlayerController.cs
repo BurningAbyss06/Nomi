@@ -68,4 +68,9 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("DoubleJump",!canDoubleJump);
 
     }
+
+    public bool canAttack()
+    {
+        return Input.GetAxis("Horizontal") == 0 && isGrounded;
+    }
 }
