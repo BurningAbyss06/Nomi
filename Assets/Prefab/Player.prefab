@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 1.002, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8315407158443945450}
+  - {fileID: 3134505760497557009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9177149072332593494
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1254995703
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -129071932, guid: f6e1062688cc0af488813116b2e277d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3, y: 3}
@@ -121,8 +121,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6775409, y: -0.38272572}
-  m_Size: {x: 1.1995472, y: 2.197546}
+  m_Offset: {x: -0.027518073, y: 0.23729777}
+  m_Size: {x: 1.1340986, y: 2.161775}
   m_Direction: 0
 --- !u!50 &5954610325272059809
 Rigidbody2D:
@@ -166,15 +166,15 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 10
   rb: {fileID: 5954610325272059809}
-  IzoffsetX: 0.6775409
-  IzoffsetY: -0.3827257
-  IzsizeX: 1.199547
-  IzsizeY: 2.197546
-  DeroffsetX: -0.6564725
-  DeroffsetY: -0.4183731
-  DersizeX: 1.285222
-  DersizeY: 2.190777
-  groundCheck: {fileID: 8315407158443945450}
+  IzoffsetX: 0.0409052
+  IzoffsetY: 0.2343168
+  IzsizeX: 1.270945
+  IzsizeY: 2.167737
+  DeroffsetX: -0.02751807
+  DeroffsetY: 0.2372978
+  DersizeX: 1.134099
+  DersizeY: 2.161775
+  groundCheck: {fileID: 3134505760497557009}
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 128
@@ -199,7 +199,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &6333965971368958442
+--- !u!1 &8450502533096403216
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,25 +207,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8315407158443945450}
+  - component: {fileID: 3134505760497557009}
   m_Layer: 6
-  m_Name: Ground Check
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8315407158443945450
+--- !u!4 &3134505760497557009
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6333965971368958442}
+  m_GameObject: {fileID: 8450502533096403216}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6786426, y: -1.5040002, z: 0}
-  m_LocalScale: {x: 0.998004, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.041, y: -0.834, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3614172261146663743}
