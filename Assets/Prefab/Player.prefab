@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -129071932, guid: f6e1062688cc0af488813116b2e277d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3, y: 3}
@@ -121,8 +121,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6270559, y: -0.43252516}
-  m_Size: {x: 1.2749641, y: 2.1586118}
+  m_Offset: {x: 0.6775409, y: -0.38272572}
+  m_Size: {x: 1.1995472, y: 2.197546}
   m_Direction: 0
 --- !u!50 &5954610325272059809
 Rigidbody2D:
@@ -166,6 +166,14 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 10
   rb: {fileID: 5954610325272059809}
+  IzoffsetX: 0.6775409
+  IzoffsetY: -0.3827257
+  IzsizeX: 1.199547
+  IzsizeY: 2.197546
+  DeroffsetX: -0.6564725
+  DeroffsetY: -0.4183731
+  DersizeX: 1.285222
+  DersizeY: 2.190777
   groundCheck: {fileID: 8315407158443945450}
   WhatIsGround:
     serializedVersion: 2
