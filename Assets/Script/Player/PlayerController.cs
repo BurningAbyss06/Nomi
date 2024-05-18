@@ -16,6 +16,15 @@ public class PlayerController : MonoBehaviour
     [Header("Animator")]
     private Animator anim;
     private SpriteRenderer pr;
+    private CapsuleCollider2D capsule;
+    public float IzoffsetX;
+    public float IzoffsetY;
+    public float IzsizeX;
+    public float IzsizeY;
+    public float DeroffsetX;
+    public float DeroffsetY;
+    public float DersizeX;
+    public float DersizeY;
 
     [Header("Ground Check")]
     private bool isGrounded;
@@ -26,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         anim=GetComponent<Animator>();
         pr=GetComponent<SpriteRenderer>();
+        capsule=GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -58,14 +68,23 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.x < 0)
         {
             pr.flipX=true;
+            capsule.offset=new Vector2(IzoffsetX,IzoffsetY);
+            capsule.size=new Vector2 (IzsizeX,IzsizeY);
         }else if(rb.velocity.x>0)
         {
             pr.flipX=false;
+            capsule.offset=new Vector2(DeroffsetX,DeroffsetY);
+            capsule.size=new Vector2 (DersizeX,DersizeY);
         }
 
         anim.SetFloat("moveSpeed", Mathf.Abs(rb.velocity.x));
         anim.SetBool("IsGrounded",isGrounded);
         anim.SetBool("DoubleJump",!canDoubleJump);
 
+    }
+
+    public bool canAttack()
+    {
+        return Input.GetAxis("Horizontal") == 0 && isGrounded;
     }
 }
