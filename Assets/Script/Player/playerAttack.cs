@@ -42,6 +42,9 @@ public class playerAttack : MonoBehaviour
         GameObject bullet = findBullet();
 
         bullet.transform.position = bulletPoint.position;
+        if (shootDirection.x < 0){
+            bullet.transform.position = new Vector3(bullet.transform.position.x - 5, transform.position.y, transform.position.z);
+        }
         bullet.GetComponent<proyectile>().SetDirection(Mathf.Sign(shootDirection.x));
 
 
