@@ -7,7 +7,8 @@ public class playerAttack : MonoBehaviour
     private PlayerController playerMovement;
     private float cooldownTimer = Mathf.Infinity;
     [SerializeField]  private Transform bulletPoint;
-    [SerializeField]  private GameObject[] bullets;  
+    [SerializeField]  private GameObject[] bullets; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,19 @@ public class playerAttack : MonoBehaviour
         cooldownTimer = 0;
         //pool bullets
 
-        bullets[0].transform.position = bulletPoint.position;
-        bullets[0].GetComponent<proyectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        GameObject bullet = findBullet();
 
+        bullet.transform.position = bulletPoint.position;
+        bullet.GetComponent<proyectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+
+    }
+    private GameObject findBullet(){
+     for (int i = 0; i < bullets.Length; i++)
+     {
+        if (!bullets[i].activeInHierarchy) return bullets[i] ;     
+     }
+        return bullets[1];
     }
 
 }
