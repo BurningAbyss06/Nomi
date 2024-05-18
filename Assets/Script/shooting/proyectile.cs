@@ -31,9 +31,12 @@ public class proyectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       if (collision.name != "Player"){
+        anim.SetTrigger("explode");
         hit = true;
         boxCollider.enabled = false;
-        anim.SetTrigger("explode");
+       }
+      
 
     }
 
