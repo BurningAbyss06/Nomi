@@ -10,6 +10,7 @@ public class proyectile : MonoBehaviour
     private bool hit;
     private Animator anim;
     private BoxCollider2D boxCollider;
+    private float life_time;
 
     void Awake()
     {
@@ -23,6 +24,9 @@ public class proyectile : MonoBehaviour
         if (hit) return;
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
+
+        life_time += Time.deltaTime;
+        if (life_time > 5) gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +40,7 @@ public class proyectile : MonoBehaviour
     public void SetDirection(float _direction)
     {
 
+        life_time = 0;
 
         direction = _direction;
         gameObject.SetActive(true);
@@ -45,7 +50,7 @@ public class proyectile : MonoBehaviour
 
         float localScaleX = transform.localScale.x;
         if (Mathf.Sign(localScaleX) != _direction){
-            localScaleX = -localScaleX;
+            localScaleX = -1*localScaleX;
         }
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
