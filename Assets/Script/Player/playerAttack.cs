@@ -8,13 +8,14 @@ public class playerAttack : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
     [SerializeField]  private Transform bulletPoint;
     [SerializeField]  private GameObject[] bullets; 
+    private SpriteRenderer pr;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerController>();
+        pr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,11 +29,7 @@ public class playerAttack : MonoBehaviour
     }
 
     private void attack()
-    {
-
-        anim.SetTrigger("attack");
-        cooldownTimer = 0;
-        
+    {        
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f; 
         // Calcula la dirección del disparo
@@ -42,11 +39,18 @@ public class playerAttack : MonoBehaviour
         GameObject bullet = findBullet();
 
         bullet.transform.position = bulletPoint.position;
+
         if (shootDirection.x < 0){
             bullet.transform.position = new Vector3(bullet.transform.position.x - 5, transform.position.y, transform.position.z);
+            pr.flipX=true;
+        }else
+        {
+            pr.flipX=false;
         }
+        
         bullet.GetComponent<proyectile>().SetDirection(Mathf.Sign(shootDirection.x));
-
+        anim.SetTrigger("attack");
+        cooldownTimer = 0;
 
     }
     private GameObject findBullet(){
