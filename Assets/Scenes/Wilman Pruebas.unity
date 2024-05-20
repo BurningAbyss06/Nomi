@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1275,7 +1276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1523508231}
   - component: {fileID: 1523508232}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IndustrialTile_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1497,11 +1498,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614172261146663743, guid: 82f20123a14412a4b944914bb5ea0ff9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.42
+      value: -6.43
       objectReference: {fileID: 0}
     - target: {fileID: 3614172261146663743, guid: 82f20123a14412a4b944914bb5ea0ff9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.157
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3614172261146663743, guid: 82f20123a14412a4b944914bb5ea0ff9, type: 3}
       propertyPath: m_LocalPosition.z
