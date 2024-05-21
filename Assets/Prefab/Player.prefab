@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4419751719799789337}
   - component: {fileID: 2724923505859229324}
   - component: {fileID: 2873455984889813352}
+  - component: {fileID: 448291015081666718}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -142,7 +143,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -240,6 +241,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 200
+--- !u!114 &448291015081666718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118514228980382073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bf46cc755cd324e929495f0e116550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 6
+  invincibility: 1
 --- !u!1 &6302796818713936718
 GameObject:
   m_ObjectHideFlags: 0
