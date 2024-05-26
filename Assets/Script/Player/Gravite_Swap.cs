@@ -12,6 +12,7 @@ public class Gravite_Swap : MonoBehaviour
         Down
     }
     private GravityDirection currentDirection = GravityDirection.Down;
+    public bool isReverse { get; private set; }
     private bool isRotating = false;
     public float rotationSpeed = 200f; 
     private Quaternion targetRotation;
@@ -19,6 +20,7 @@ public class Gravite_Swap : MonoBehaviour
 
     void Start()
     {
+        isReverse = false;
     }
 
     void Update()
@@ -26,10 +28,12 @@ public class Gravite_Swap : MonoBehaviour
 
          if (Input.GetKeyDown(KeyCode.Q))
         {
+            isReverse = false;
             ChangeGravity(GravityDirection.Down);
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
+            isReverse = true;
             ChangeGravity(GravityDirection.Up);
         }
         
@@ -71,17 +75,29 @@ public class Gravite_Swap : MonoBehaviour
 
     IEnumerator RotateCharacter()
     {
+        // Indica que la rotación está en curso
         isRotating = true;
 
+        // Mientras la diferencia angular entre la rotación actual y la rotación objetivo sea mayor que un pequeño umbral
         while (Quaternion.Angle(transform.rotation, targetRotation) > 0.01f)
         {
+            // Rota gradualmente el objeto hacia la rotación objetivo
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            yield return null;
-            
 
+            // Espera hasta el siguiente frame antes de continuar la ejecución
+            yield return null;
         }
 
+        // Asegura que la rotación finalice exactamente en la rotación objetivo
         transform.rotation = targetRotation;
+
+        // Invertir la escala en el eje X para el flip horizontal
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1; // Invertir el eje X
+        transform.localScale = newScale;
+
+        // Indica que la rotación ha terminado
         isRotating = false;
     }
+
 }
