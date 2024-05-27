@@ -16,6 +16,8 @@ public class Gravite_Swap : MonoBehaviour
     private bool isRotating = false;
     public float rotationSpeed = 200f; 
     private Quaternion targetRotation;
+    private bool isCooldown = false;
+    public float cooldownTime = 5f; // Cooldown time in seconds
 
 
     void Start()
@@ -25,18 +27,20 @@ public class Gravite_Swap : MonoBehaviour
 
     void Update()
     {
+        if (!isCooldown)
+        {
 
-         if (Input.GetKeyDown(KeyCode.Q))
-        {
-            isReverse = false;
-            ChangeGravity(GravityDirection.Down);
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                isReverse = false;
+                ChangeGravity(GravityDirection.Down);
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                isReverse = true;
+                ChangeGravity(GravityDirection.Up);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            isReverse = true;
-            ChangeGravity(GravityDirection.Up);
-        }
-        
     }
 
      void ChangeGravity(GravityDirection direction)
@@ -70,6 +74,7 @@ public class Gravite_Swap : MonoBehaviour
             {
                 StartCoroutine(RotateCharacter());
             }
+            StartCoroutine(StartCooldown());
         }
     }
 
@@ -99,5 +104,10 @@ public class Gravite_Swap : MonoBehaviour
         // Indica que la rotación ha terminado
         isRotating = false;
     }
-
+    IEnumerator StartCooldown()
+    {
+        isCooldown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        isCooldown = false;
+    }
 }
