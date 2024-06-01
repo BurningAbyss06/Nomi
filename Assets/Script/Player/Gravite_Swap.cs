@@ -80,20 +80,20 @@ public class Gravite_Swap : MonoBehaviour
 
     IEnumerator RotateCharacter()
     {
-        // Indica que la rotación está en curso
+        // Indica que la rotacion esta en curso
         isRotating = true;
 
-        // Mientras la diferencia angular entre la rotación actual y la rotación objetivo sea mayor que un pequeño umbral
+        // Mientras la diferencia angular entre la rotacion actual y la rotacion objetivo sea mayor que un pequeno umbral
         while (Quaternion.Angle(transform.rotation, targetRotation) > 0.01f)
         {
-            // Rota gradualmente el objeto hacia la rotación objetivo
+            // Rota gradualmente el objeto hacia la rotacion objetivo
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            // Espera hasta el siguiente frame antes de continuar la ejecución
+            // Espera hasta el siguiente frame antes de continuar la ejecucion
             yield return null;
         }
 
-        // Asegura que la rotación finalice exactamente en la rotación objetivo
+        // Asegura que la rotacion finalice exactamente en la rotacion objetivo
         transform.rotation = targetRotation;
 
         // Invertir la escala en el eje X para el flip horizontal
@@ -101,7 +101,7 @@ public class Gravite_Swap : MonoBehaviour
         newScale.x *= -1; // Invertir el eje X
         transform.localScale = newScale;
 
-        // Indica que la rotación ha terminado
+        // Indica que la rotacion ha terminado
         isRotating = false;
     }
     IEnumerator StartCooldown()
