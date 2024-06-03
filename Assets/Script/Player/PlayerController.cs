@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Movimiento")]
     public float moveSpeed;
 
@@ -13,8 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Componentes")]
     public Rigidbody2D rb;
+
     [Header("Animator")]
-    private Animator anim;
+    public Animator anim;
     private SpriteRenderer pr;
     private CapsuleCollider2D capsule;
 
@@ -22,6 +25,15 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public Transform groundCheck;
     public LayerMask WhatIsGround;
+
+    [Header("KnockBack")]
+    public float knockBackLength, knockBackForce;
+    private float knockBackCounter;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -32,43 +44,62 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
-
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
-
-        if(isGrounded)
+        if(knockBackCounter <= 0)
         {
-            canDoubleJump = true;
-        }
+            rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
 
-        if(Input.GetButtonDown("Jump"))
-        {
             if(isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce );
+                canDoubleJump = true;
+            }
 
-            }else
+            if(Input.GetButtonDown("Jump"))
             {
-                if(canDoubleJump)
+                if(isGrounded)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce );
-                    canDoubleJump = false;
+
+                }else
+                {
+                    if(canDoubleJump)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce );
+                        canDoubleJump = false;
+                    }
                 }
             }
-        }
 
-        if(rb.velocity.x < 0)
+            if(rb.velocity.x < 0)
+            {
+                pr.flipX=true;
+            }else if(rb.velocity.x>0)
+            {
+                pr.flipX=false;
+            }
+        }else
         {
-            pr.flipX=true;
-        }else if(rb.velocity.x>0)
-        {
-            pr.flipX=false;
-        }
+            knockBackCounter -=Time.deltaTime;
+            if(!pr.flipX)
+            {
+                rb.velocity=new Vector2(-knockBackForce,rb.velocity.y);
+            }else
+            {
+                rb.velocity=new Vector2(knockBackForce,rb.velocity.y);                
+            }
+        } 
+       
 
         anim.SetFloat("moveSpeed", Mathf.Abs(rb.velocity.x));
         anim.SetBool("IsGrounded",isGrounded);
         anim.SetBool("DoubleJump",!canDoubleJump);
 
+    }
+
+    public void KnockBack()
+    {
+        knockBackCounter = knockBackLength;
+        rb.velocity = new Vector2(0f, knockBackForce);
     }
 
     public bool canAttack()
