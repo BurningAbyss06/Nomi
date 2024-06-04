@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     public UnityEngine.UI.Image heart1, heart2, heart3;
 
     public Sprite heartFull,heartHalf,hearthEmpty;
+    public Text sakeText;
+
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class UIController : MonoBehaviour
     }
     void Start()
     {
-        
+        UpdateSakeCount();   
     }
 
     void Update()
@@ -77,5 +79,9 @@ public class UIController : MonoBehaviour
                 heart3.sprite =hearthEmpty;
                 break;
         }
+    }
+    public void UpdateSakeCount()
+    {
+       sakeText.text= LevelManager.instance.sakeCollected.ToString();
     }
 }
