@@ -16,7 +16,8 @@ public class Pickup : MonoBehaviour
         {
             if(IsSake)
             {
-                LevelManager.instance.sakeCollected++;           
+                LevelManager.instance.sakeCollected++; 
+                UIController.instance.UpdateSakeCount();                     
                 isCollected = true;
                 Destroy(gameObject); 
             }
