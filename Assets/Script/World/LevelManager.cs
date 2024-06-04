@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 
     public float WaitToRespawn;
 
+    public int sakeCollected;
+
     void Awake()
     {
         instance = this;

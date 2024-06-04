@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [Header("Animator")]
     public Animator anim;
     private SpriteRenderer pr;
-    private CapsuleCollider2D capsule;
 
     [Header("Ground Check")]
     private bool isGrounded;
@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
     public float knockBackLength, knockBackForce;
     private float knockBackCounter;
 
+    [Header("Escaleras")]
+    [SerializeField] private float velocidadEscalar;
+    private CapsuleCollider2D capsule;
+    private float gravityinicial;
+    private bool isclimb;
     private void Awake()
     {
         instance = this;
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
         anim=GetComponent<Animator>();
         pr=GetComponent<SpriteRenderer>();
         capsule=GetComponent<CapsuleCollider2D>();
+        gravityinicial=rb.gravityScale;
     }
 
     void Update()
@@ -48,6 +54,15 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
+
+            Climb();
+            if(Mathf.Abs(rb.velocity.y) > Mathf.Epsilon)
+            {
+                anim.SetFloat("VelocityY", Mathf.Sign(rb.velocity.y));
+            }else
+            {
+                anim.SetFloat("VelocityY", 0f);
+            }
 
             if(isGrounded)
             {
@@ -96,6 +111,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Climb()
+    {
+        if((Input.GetAxisRaw("Vertical")!=0||isclimb)&&(capsule.IsTouchingLayers(LayerMask.GetMask("Escalera"))))
+        {
+            Vector2 velocidadsubida= new Vector2(rb.velocity.x,Input.GetAxisRaw("Vertical")*velocidadEscalar);
+            rb.velocity=velocidadsubida;
+            rb.gravityScale=0f;
+            isclimb=true;
+        }else
+        {
+            rb.gravityScale=gravityinicial;
+            isclimb=false;
+        }
+        if(isGrounded)
+        {
+            isclimb=false;
+        }
+        anim.SetBool("IsClimbing", isclimb);
+    }
     public void KnockBack()
     {
         knockBackCounter = knockBackLength;
