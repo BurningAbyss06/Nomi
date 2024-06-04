@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSake: 0
+  isHeal: 1
 --- !u!58 &2309630526687972959
 CircleCollider2D:
   m_ObjectHideFlags: 0

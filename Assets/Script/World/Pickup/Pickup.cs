@@ -6,7 +6,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
 
-    public bool IsSake;
+    public bool IsSake, isHeal;
 
     private bool isCollected;
 
@@ -19,6 +19,15 @@ public class Pickup : MonoBehaviour
                 LevelManager.instance.sakeCollected++;           
                 isCollected = true;
                 Destroy(gameObject); 
+            }
+            if (isHeal)
+            {
+                if(PlayerHealthController.instance.currentHealth != PlayerHealthController.instance.maxHealth)
+                {
+                    PlayerHealthController.instance.HealPlayer();
+                    isCollected=true;
+                    Destroy(gameObject);
+                }
             }
         }
     }
