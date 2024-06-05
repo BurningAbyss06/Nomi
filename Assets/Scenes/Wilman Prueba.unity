@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6161554876639281985, guid: 82a55ff615e181b4fbcdf2b52e2e9bca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9892883
+      value: -1.937201
       objectReference: {fileID: 0}
     - target: {fileID: 6161554876639281985, guid: 82a55ff615e181b4fbcdf2b52e2e9bca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8150912666968245143, guid: 82a55ff615e181b4fbcdf2b52e2e9bca, type: 3}
+      propertyPath: sakeE
+      value: 
+      objectReference: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3466,11 +3470,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3552491590438990775}
+  - {fileID: 258031663737201520}
   - {fileID: 204923391}
   - {fileID: 1363273348}
   - {fileID: 1813957072}
   - {fileID: 746955512}
-  - {fileID: 258031663737201520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &803458622 stripped
@@ -4221,7 +4225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6313401376028902077, guid: b55869cc9698b2347872ed97b0667b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0261269
+      value: -1.937201
       objectReference: {fileID: 0}
     - target: {fileID: 6313401376028902077, guid: b55869cc9698b2347872ed97b0667b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4255,6 +4259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6976502004571377345, guid: b55869cc9698b2347872ed97b0667b95, type: 3}
+      propertyPath: sakeE
+      value: 
+      objectReference: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4277,13 +4285,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sake_Ammo2
       objectReference: {fileID: 0}
+    - target: {fileID: 2041804132898096526, guid: 1c6cec03095e95848b7404af09ecaeeb, type: 3}
+      propertyPath: sakeE
+      value: 
+      objectReference: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}
     - target: {fileID: 8237820855414055639, guid: 1c6cec03095e95848b7404af09ecaeeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8933374
       objectReference: {fileID: 0}
     - target: {fileID: 8237820855414055639, guid: 1c6cec03095e95848b7404af09ecaeeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9524479
+      value: -1.937201
       objectReference: {fileID: 0}
     - target: {fileID: 8237820855414055639, guid: 1c6cec03095e95848b7404af09ecaeeb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4886,6 +4898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sake
       objectReference: {fileID: 0}
+    - target: {fileID: 2561540427650936963, guid: 15954cc6502eab7429738a435acdb808, type: 3}
+      propertyPath: sakeE
+      value: 
+      objectReference: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}
     - target: {fileID: 8409655581140084987, guid: 15954cc6502eab7429738a435acdb808, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6634134
