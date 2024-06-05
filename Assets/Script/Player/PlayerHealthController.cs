@@ -6,14 +6,15 @@ using UnityEngine;
 public class PlayerHealthController : MonoBehaviour
 {
     public static PlayerHealthController instance;
+
     [Header("Vida")]
     public int currentHealth;
     public int maxHealth;
     public float invincibility;
     private float invincibleCounter;
-
     private SpriteRenderer sr;
 
+    public GameObject deathEffect;
     public void Awake()
     {
         instance = this;
@@ -47,6 +48,8 @@ public class PlayerHealthController : MonoBehaviour
             if(currentHealth <= 0)
             {
                 currentHealth=0;
+
+                Instantiate(deathEffect,PlayerController.instance.transform.position,PlayerController.instance.transform.rotation);
                 LevelManager.instance.RespawnPlayer();
             }else
             {
