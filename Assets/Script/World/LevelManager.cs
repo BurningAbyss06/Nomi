@@ -45,4 +45,16 @@ public class LevelManager : MonoBehaviour
         PlayerHealthController.instance.currentHealth=PlayerHealthController.instance.maxHealth;
         UIController.instance.UpdateHearts();
     }
+
+    public void EndLevel()
+    {
+        StartCoroutine(EndLevelCo());
+    }
+    public IEnumerator EndLevelCo()
+    {   
+        PlayerController.instance.stopInput = true;
+        CamaraController.instance.stopFollow = true;
+        yield return new WaitForSeconds(1.5f);
+        UIController.instance.FadeToBlack();
+    }
 }

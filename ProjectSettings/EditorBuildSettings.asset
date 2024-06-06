@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Inicial.unity
     guid: 16edeb95c8a41ee479c91ad48f2133b6
   - enabled: 1
-    path: Assets/Scenes/Wilman Prueba.unity
-    guid: a9b718d7efe8b494f917bf65362c2f5d
+    path: Assets/Scenes/Level 1.unity
+    guid: 2255aee925844e0429a94885207274e4
   - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: ce543ba1a8588b54bbb20bd8644477ec
