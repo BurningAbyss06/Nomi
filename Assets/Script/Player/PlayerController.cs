@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("Salto")]
     private bool canDoubleJump;
     public float jumpForce;
+    public float doublejumpForce;
 
     [Header("Componentes")]
     public Rigidbody2D rb;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D capsule;
     private float gravityinicial;
     private bool isclimb;
+    
+
     private void Awake()
     {
         instance = this;
@@ -50,12 +53,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(!PauseMenu.instance.isPaused){
         if(knockBackCounter <= 0)
         {
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
-
             Climb();
+
             if(Mathf.Abs(rb.velocity.y) > Mathf.Epsilon)
             {
                 anim.SetFloat("VelocityY", Mathf.Sign(rb.velocity.y));
@@ -79,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if(canDoubleJump)
                     {
-                        rb.velocity = new Vector2(rb.velocity.x, jumpForce );
+                        rb.velocity = new Vector2(rb.velocity.x, doublejumpForce );
                         canDoubleJump = false;
                     }
                 }
@@ -103,7 +107,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity=new Vector2(knockBackForce,rb.velocity.y);                
             }
         } 
-       
+        }
 
         anim.SetFloat("moveSpeed", Mathf.Abs(rb.velocity.x));
         anim.SetBool("IsGrounded",isGrounded);
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     public void Climb()
     {
-        if((Input.GetAxisRaw("Vertical")!=0||isclimb)&&(capsule.IsTouchingLayers(LayerMask.GetMask("Escalera"))))
+        if((Input.GetAxisRaw("Vertical")!=0||isclimb)&&capsule.IsTouchingLayers(LayerMask.GetMask("Escalera")))
         {
             Vector2 velocidadsubida= new Vector2(rb.velocity.x,Input.GetAxisRaw("Vertical")*velocidadEscalar);
             rb.velocity=velocidadsubida;

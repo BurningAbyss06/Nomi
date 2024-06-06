@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -33,7 +34,11 @@ public class LevelManager : MonoBehaviour
     IEnumerator RespawnCo()
     {
         PlayerController.instance.gameObject.SetActive(false);
-        yield return new WaitForSeconds(WaitToRespawn);
+        yield return new WaitForSeconds(WaitToRespawn- (1f/UIController.instance.fadeSpeed));
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds((1f/UIController.instance.fadeSpeed)+.2f);
+        UIController.instance.FadeFromBlack();
+
 
         PlayerController.instance.gameObject.SetActive(true);
         PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
