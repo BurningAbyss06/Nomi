@@ -21,7 +21,11 @@ public class proyectile : MonoBehaviour
 
     void Update()
     {
-        if (hit) return;
+        if (hit)
+        {
+           // gameObject.SetActive(false);
+            return;
+        }
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
@@ -31,12 +35,14 @@ public class proyectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if (collision.name != "Player"){
+       if (collision.name == "Player"){
+            return;
+       }
+
         anim.SetTrigger("explode");
         hit = true;
         boxCollider.enabled = false;
-       }
-      
+
 
     }
 
