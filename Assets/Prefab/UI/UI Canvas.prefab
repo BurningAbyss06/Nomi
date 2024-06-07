@@ -382,6 +382,7 @@ MonoBehaviour:
   sakeText: {fileID: 2302271085192118862}
   fadeScreen: {fileID: 7754997793449416836}
   fadeSpeed: 2
+  LevelCompleteText: {fileID: 3252025131308276062}
 --- !u!114 &4119546328146154981
 MonoBehaviour:
   m_ObjectHideFlags: 0
