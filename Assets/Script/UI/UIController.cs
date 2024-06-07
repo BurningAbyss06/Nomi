@@ -9,11 +9,20 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
+    [Header("Vida")]
     public UnityEngine.UI.Image heart1, heart2, heart3;
-
     public Sprite heartFull,heartHalf,hearthEmpty;
+
+    [Header("Sake")]
     public Text sakeText;
 
+    [Header("Transicion")]
+    public UnityEngine.UI.Image fadeScreen;
+    public float fadeSpeed;
+    private bool shouldFateToBlack, shouldFateFromBlack;
+
+    [Header("Nivel Completado")]
+    public GameObject LevelCompleteText;
 
     private void Awake()
     {
@@ -22,11 +31,28 @@ public class UIController : MonoBehaviour
     void Start()
     {
         UpdateSakeCount();   
+        FadeFromBlack();
     }
 
     void Update()
     {
-        
+        if (shouldFateToBlack)
+        {
+            fadeScreen.color= new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a,1f,fadeSpeed * Time.deltaTime));
+            if(fadeScreen.color.a==1f)
+            {
+                shouldFateToBlack = false;
+            }
+        }
+
+        if (shouldFateFromBlack)
+        {
+            fadeScreen.color= new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a,0f,fadeSpeed * Time.deltaTime));
+            if(fadeScreen.color.a==0f)
+            {
+                shouldFateFromBlack = false;
+            }
+        }
     }
     public void UpdateHearts()
     {
@@ -83,5 +109,16 @@ public class UIController : MonoBehaviour
     public void UpdateSakeCount()
     {
        sakeText.text= LevelManager.instance.sakeCollected.ToString();
+    }
+
+    public void FadeToBlack()
+    {
+        shouldFateToBlack = true;
+        shouldFateFromBlack = false;
+    }
+    public void FadeFromBlack()
+    {
+        shouldFateToBlack = false;
+        shouldFateFromBlack = true;
     }
 }

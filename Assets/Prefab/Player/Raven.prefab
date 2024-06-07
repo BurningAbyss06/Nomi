@@ -174,7 +174,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1.7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -199,7 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 10
+  jumpForce: 7.5
+  doublejumpForce: 6
   rb: {fileID: 5464627626124373558}
   anim: {fileID: 0}
   groundCheck: {fileID: 8436619538730300005}
@@ -208,7 +209,7 @@ MonoBehaviour:
     m_Bits: 128
   knockBackLength: 0.25
   knockBackForce: 3
-  velocidadEscalar: 0
+  velocidadEscalar: 5
 --- !u!114 &6886774870108370139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 6
   invincibility: 1
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 8802226808514232796, guid: e73d1d43492ba4d49914853b19d9a017, type: 3}
 --- !u!95 &1949075967089448303
 Animator:
   serializedVersion: 5
