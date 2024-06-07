@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class proyectile : MonoBehaviour
@@ -32,16 +33,39 @@ public class proyectile : MonoBehaviour
         life_time += Time.deltaTime;
         if (life_time > 5) gameObject.SetActive(false);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+ 
+
        if (collision.name == "Player"){
             return;
        }
+       if (collision.name.Contains("Sake")){
+            return;
+       }
+        if (collision.name.Contains("Ladder"))
+        {
+            return;
+        }
+
+        if (collision.name.Contains("Cthulu") ||
+            collision.name.Contains("Android"))
+        {
+            if (collision.GetComponent<EnemyHealthController>().isDied)
+            {
+                return;
+            }
+            else
+            {
+                collision.GetComponent<EnemyHealthController>().TakeDamage();
+            }
+        }
 
         anim.SetTrigger("explode");
         hit = true;
         boxCollider.enabled = false;
+
 
 
     }

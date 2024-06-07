@@ -38,11 +38,11 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
     //funcion encargada de controlar cuanta vida le queda al jugador y llamar a la funcion para que reaparesca si muere 
-    public void TakeDamage()
+    public void TakeDamage(int damage = 1)
     {
         if(invincibleCounter <= 0)
         {
-            currentHealth --;
+            currentHealth -= damage;
             PlayerController.instance.anim.SetTrigger("Hurt");
 
             if(currentHealth <= 0)
