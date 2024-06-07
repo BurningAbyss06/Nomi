@@ -65,7 +65,7 @@ public class EnemyHealthController : MonoBehaviour
                     {
                         GetComponent<MeleeEnemyController>().enabled = false;
                     }
-
+                 
                     isDied = true;
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MeleeEnemyController : MonoBehaviour
+public class RangedEnemyController : MonoBehaviour
 {
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -18,7 +18,6 @@ public class MeleeEnemyController : MonoBehaviour
 
     [Header("Referenced Parameters")]
     private Animator anim;
-    private PlayerHealthController playerHealth;
     private EnemyPatrol enemyPatrol;
 
     void Start()
@@ -41,7 +40,7 @@ public class MeleeEnemyController : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 //attack
-                anim.SetTrigger("meleeAttack");
+                anim.SetTrigger("attack");
                 cooldownTimer = 0;
             }
         }
@@ -71,7 +70,7 @@ public class MeleeEnemyController : MonoBehaviour
 
          if (hit.collider != null)
          {
-            playerHealth = hit.transform.GetComponent<PlayerHealthController>();                      
+            //playerHealth = hit.transform.GetComponent<PlayerHealthController>();                      
          }   
 
         return hit.collider != null; 
@@ -93,7 +92,7 @@ public class MeleeEnemyController : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            playerHealth.TakeDamage(damage);
+            //playerHealth.TakeDamage(damage);
         }
     }
 

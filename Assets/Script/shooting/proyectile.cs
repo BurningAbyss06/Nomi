@@ -36,6 +36,8 @@ public class proyectile : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+ 
+
        if (collision.name == "Player"){
             return;
        }
@@ -47,7 +49,8 @@ public class proyectile : MonoBehaviour
             return;
         }
 
-        if (collision.name == "Cthulu")
+        if (collision.name.Contains("Cthulu") ||
+            collision.name.Contains("Android"))
         {
             if (collision.GetComponent<EnemyHealthController>().isDied)
             {
