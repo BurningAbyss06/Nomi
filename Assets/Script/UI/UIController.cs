@@ -9,13 +9,20 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
+    [Header("Vida")]
     public UnityEngine.UI.Image heart1, heart2, heart3;
-
     public Sprite heartFull,heartHalf,hearthEmpty;
+
+    [Header("Sake")]
     public Text sakeText;
+
+    [Header("Transicion")]
     public UnityEngine.UI.Image fadeScreen;
     public float fadeSpeed;
     private bool shouldFateToBlack, shouldFateFromBlack;
+
+    [Header("Nivel Completado")]
+    public GameObject LevelCompleteText;
 
     private void Awake()
     {

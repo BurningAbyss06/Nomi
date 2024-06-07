@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     private float gravityinicial;
     private bool isclimb;
     
-
+    [Header("Fin Nivel")]
+    public bool stopInput;
     private void Awake()
     {
         instance = this;
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!PauseMenu.instance.isPaused){
+        if((!PauseMenu.instance.isPaused)&&(!stopInput)){
         if(knockBackCounter <= 0)
         {
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
