@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeEnemyController : MonoBehaviour
@@ -10,9 +11,12 @@ public class MeleeEnemyController : MonoBehaviour
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask playerLayer;
+
     private  float cooldownTimer = Mathf.Infinity;
 
     private Animator anim;
+    private PlayerHealthController playerHealth;
+    private EnemyPatrol enemyPatrol;
 
     void Start()
     {
@@ -22,20 +26,26 @@ public class MeleeEnemyController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<EnemyPatrol>();
     }
 
 
     void Update()
     {
-        cooldownTimer += Time.time;
+        cooldownTimer += Time.deltaTime;
         if (PlayerInSight())
         {
             if (cooldownTimer >= attackCooldown)
             {
                 //attack
-                cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");
+                cooldownTimer = 0;
             }
+        }
+
+        if (enemyPatrol != null)
+        {
+            enemyPatrol.enabled = !PlayerInSight();
         }
     
     }
@@ -55,6 +65,12 @@ public class MeleeEnemyController : MonoBehaviour
             0,
             playerLayer
             );
+
+         if (hit.collider != null)
+         {
+            playerHealth = hit.transform.GetComponent<PlayerHealthController>();                      
+         }   
+
         return hit.collider != null; 
     }
 
@@ -68,6 +84,14 @@ public class MeleeEnemyController : MonoBehaviour
                 boxCollider.bounds.size.y,
                 boxCollider.bounds.size.z
             ));
+    }
+
+    private void DoDamageToPlayer()
+    {
+        if (PlayerInSight())
+        {
+            playerHealth.TakeDamage();
+        }
     }
 
 }
