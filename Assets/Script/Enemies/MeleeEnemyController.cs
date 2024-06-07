@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class MeleeEnemyController : MonoBehaviour
 {
+    [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private int damage;
     [SerializeField] private float range;
+    private float cooldownTimer = Mathf.Infinity;
+
+    [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask playerLayer;
 
-    private  float cooldownTimer = Mathf.Infinity;
-
+    [Header("Referenced Parameters")]
     private Animator anim;
     private PlayerHealthController playerHealth;
     private EnemyPatrol enemyPatrol;
@@ -90,7 +93,7 @@ public class MeleeEnemyController : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            playerHealth.TakeDamage();
+            playerHealth.TakeDamage(damage);
         }
     }
 
