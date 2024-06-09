@@ -72,4 +72,20 @@ public class PlayerHealthController : MonoBehaviour
         } 
         UIController.instance.UpdateHearts();   
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag=="Plataforma")
+        {
+            transform.parent =other.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.tag=="Plataforma")
+        {
+            transform.parent =null;
+        }
+    }
 }
