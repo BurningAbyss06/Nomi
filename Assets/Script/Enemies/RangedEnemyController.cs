@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RangedEnemyController : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class RangedEnemyController : MonoBehaviour
     [SerializeField] private float range;
     private float cooldownTimer = Mathf.Infinity;
 
+    [Header("Ranged parameters")]
+    [SerializeField] private Transform firepoint;
+    [SerializeField] private GameObject[] proyectiles;
+
     [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -19,6 +24,7 @@ public class RangedEnemyController : MonoBehaviour
     [Header("Referenced Parameters")]
     private Animator anim;
     private EnemyPatrol enemyPatrol;
+    private SpriteRenderer pr; 
 
     void Start()
     {
@@ -29,6 +35,7 @@ public class RangedEnemyController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        pr = GetComponent<SpriteRenderer>();
     }
 
 
@@ -40,8 +47,8 @@ public class RangedEnemyController : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 //attack
-                anim.SetTrigger("attack");
                 cooldownTimer = 0;
+                anim.SetTrigger("rangedAttack");
             }
         }
 
@@ -53,7 +60,6 @@ public class RangedEnemyController : MonoBehaviour
     }
 
     private bool PlayerInSight()
-
     {
         int sign = (transform.localScale.x > 0) ? 1 : -1;
         RaycastHit2D hit = Physics2D.BoxCast(
@@ -67,11 +73,6 @@ public class RangedEnemyController : MonoBehaviour
             0,
             playerLayer
             );
-
-         if (hit.collider != null)
-         {
-            //playerHealth = hit.transform.GetComponent<PlayerHealthController>();                      
-         }   
 
         return hit.collider != null; 
     }
@@ -88,12 +89,40 @@ public class RangedEnemyController : MonoBehaviour
             ));
     }
 
-    private void DoDamageToPlayer()
+    private void rangedAttack()
     {
         if (PlayerInSight())
         {
-            //playerHealth.TakeDamage(damage);
+
+            GameObject bullet = findBullet();
+            bullet.transform.position = firepoint.position;
+
+            float direction = (bullet.transform.localScale.x > 0) ? 1 : -1;
+
+            if (direction < 0)
+            {
+                bullet.transform.position = new Vector3(bullet.transform.position.x - 5, transform.position.y, transform.position.z);
+                pr.flipX = true;
+            }
+            else
+            {
+                pr.flipX = false;
+            }
+;
+            bullet.GetComponent<EnemyProyectile>().SetDirectionAndDamage(Mathf.Sign(transform.localScale.x), damage);
+
+
         }
+
+    }
+
+    private GameObject findBullet()
+    {
+        for (int i = 0; i < proyectiles.Length; i++)
+        {
+            if (!proyectiles[i].activeSelf) return proyectiles[i];
+        }
+        return proyectiles[1];
     }
 
     private void Deactivate()
