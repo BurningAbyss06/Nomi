@@ -12099,7 +12099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1872880874120723570, guid: aa4f620c4c9d4de47968a1632e79fa60, type: 3}
       propertyPath: totalSake
-      value: 5
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1872880874120723570, guid: aa4f620c4c9d4de47968a1632e79fa60, type: 3}
       propertyPath: levelToLoad

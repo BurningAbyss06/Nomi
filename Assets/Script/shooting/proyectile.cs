@@ -61,13 +61,37 @@ public class proyectile : MonoBehaviour
                 collision.GetComponent<EnemyHealthController>().TakeDamage();
             }
         }
+        
+
+        if(collision.name.Contains("Enemy_Alien_Dino")||collision.name.Contains("Infantryman"))
+        {
+            if(collision.GetComponent<DinoHealthController>())
+            {
+                if (collision.GetComponent<DinoHealthController>().isDied)
+                {
+                    return;
+                }
+                else
+                {
+                    collision.GetComponent<DinoHealthController>().TakeDamage();
+                }
+            }
+            if(collision.GetComponent<InfantrymanHealthController>())
+            {
+                if (collision.GetComponent<InfantrymanHealthController>().isDied)
+                {
+                    return;
+                }
+                else
+                {
+                    collision.GetComponent<InfantrymanHealthController>().TakeDamage();
+                }
+            }
+        }
 
         anim.SetTrigger("explode");
         hit = true;
         boxCollider.enabled = false;
-
-
-
     }
 
     public void SetDirection(float _direction)

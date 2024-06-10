@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 5464627626124373558}
   - component: {fileID: 2331246629013936353}
   - component: {fileID: 6886774870108370139}
-  - component: {fileID: 5102248363236192050}
   - component: {fileID: 3760555262103835879}
   - component: {fileID: 1949075967089448303}
   m_Layer: 6
@@ -110,8 +109,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1254995703
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2a72fa76c43d23340afbdcbea6298ccf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,8 +155,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0022789955, y: -0.048226546}
-  m_Size: {x: 0.1851534, y: 0.37681198}
+  m_Offset: {x: 0, y: -0.052899458}
+  m_Size: {x: 0.1851534, y: 0.37420103}
   m_Direction: 0
 --- !u!50 &5464627626124373558
 Rigidbody2D:
@@ -201,12 +200,16 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 10
   doublejumpForce: 6
+  dimensionesCaja: {x: 0, y: 0, z: 0}
   rb: {fileID: 5464627626124373558}
   anim: {fileID: 0}
   groundCheck: {fileID: 8436619538730300005}
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 640
+  WhatIsPlatform:
+    serializedVersion: 2
+    m_Bits: 0
   knockBackLength: 0.25
   knockBackForce: 3
   velocidadEscalar: 5
@@ -236,20 +239,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &5102248363236192050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4176144535131275600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0c040d59604244db9ae2d0b0820a7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 200
-  cooldownTime: 5
 --- !u!114 &3760555262103835879
 MonoBehaviour:
   m_ObjectHideFlags: 0

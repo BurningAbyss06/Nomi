@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class Gravite_Swap : MonoBehaviour
 {
-    private enum GravityDirection
+    public static Gravite_Swap instance;
+    public enum GravityDirection
     {
         Left,
         Right,
         Up,
         Down
     }
-    private GravityDirection currentDirection = GravityDirection.Down;
+
+    public GravityDirection currentDirection = GravityDirection.Down;
     public bool isReverse { get; private set; }
-    private bool isRotating = false;
+    public bool isRotating = false;
     public float rotationSpeed = 200f; 
     private Quaternion targetRotation;
-    private bool isCooldown = false;
+    public bool isCooldown = false;
     public float cooldownTime = 5f; // Cooldown time in seconds
 
 
-    void Start()
+    private void Awake()
+    {
+        instance = this;
+    }
+    public void Start()
     {
         isReverse = false;
     }
 
-    void Update()
+    public void ControllerSawap()
     {
         if (!isCooldown)
         {
@@ -43,7 +49,7 @@ public class Gravite_Swap : MonoBehaviour
         }
     }
 
-     void ChangeGravity(GravityDirection direction)
+    public  void ChangeGravity(GravityDirection direction)
     {
         if (currentDirection != direction)
         {

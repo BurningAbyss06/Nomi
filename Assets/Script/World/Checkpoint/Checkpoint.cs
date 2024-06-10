@@ -17,7 +17,7 @@ public class Checkpoint : MonoBehaviour
         {
             CheckpointController.instance.DesactivateCheckpoints();
             sp.sprite = cpon;
-            CheckpointController.instance.SetSpawnPoint(transform.position);
+            CheckpointController.instance.SetSpawnPoint(transform.position,other.GetComponent<CapsuleCollider2D>());
         }
     }
 

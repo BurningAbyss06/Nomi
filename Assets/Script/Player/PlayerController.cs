@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,10 +11,12 @@ public class PlayerController : MonoBehaviour
     [Header("Movimiento")]
     public float moveSpeed;
 
+
     [Header("Salto")]
     private bool canDoubleJump;
     public float jumpForce;
     public float doublejumpForce;
+    [SerializeField] public Vector3 dimensionesCaja;
 
     [Header("Componentes")]
     public Rigidbody2D rb;
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public Transform groundCheck;
     public LayerMask WhatIsGround;
+    public LayerMask WhatIsPlatform;
 
     [Header("KnockBack")]
     public float knockBackLength, knockBackForce;
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Escaleras")]
     [SerializeField] private float velocidadEscalar;
-    private CapsuleCollider2D capsule;
+    public CapsuleCollider2D capsule;
     private float gravityinicial;
     private bool isclimb;
     
@@ -76,17 +80,23 @@ public class PlayerController : MonoBehaviour
 
             if(Input.GetButtonDown("Jump"))
             {
-                if(isGrounded)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce );
 
-                }else
+                if(Input.GetAxisRaw("Vertical") >= 0)
                 {
-                    if(canDoubleJump)
+                    if(isGrounded)
                     {
-                        rb.velocity = new Vector2(rb.velocity.x, doublejumpForce );
-                        canDoubleJump = false;
-                    }
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce );
+
+                    }else
+                    {
+                        if(canDoubleJump)
+                        {
+                            rb.velocity = new Vector2(rb.velocity.x, doublejumpForce );
+                            canDoubleJump = false;
+                        }
+                    } 
+                } else{
+                    DesactivarPlataforma();
                 }
             }
 
@@ -114,6 +124,20 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsGrounded",isGrounded);
         anim.SetBool("DoubleJump",!canDoubleJump);
 
+    }
+
+    private void  DesactivarPlataforma()
+    {
+        Collider2D[] objetos=Physics2D.OverlapBoxAll(groundCheck.position,dimensionesCaja, 0f,WhatIsPlatform);
+        foreach(Collider2D item in objetos)
+        {
+            PlatformEffector2D platformEffector2D = item.GetComponent<PlatformEffector2D>();
+            if(platformEffector2D!=null)
+            {
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(),item.GetComponent<Collider2D>(),true);
+;
+            }
+        }
     }
 
     public void Climb()
@@ -144,5 +168,12 @@ public class PlayerController : MonoBehaviour
     public bool canAttack()
     {
         return Input.GetAxis("Horizontal") == 0 && isGrounded;
+    }
+
+  
+    private void OnDrawGizmos()
+    {
+        Gizmos.color=Color.yellow;
+        Gizmos.DrawWireCube(groundCheck.position,dimensionesCaja);
     }
 }

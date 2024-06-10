@@ -156,3 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSake: 1
+  isHeal: 0
+  sakeE: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}

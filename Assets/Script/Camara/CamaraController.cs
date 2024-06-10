@@ -7,7 +7,7 @@ public class CamaraController : MonoBehaviour
     public static CamaraController instance;
     public Transform target;
     public Transform fb,mb;
-    private float lastxPos;
+    private Vector2 lastPos;
     public float minHight, maxHight;
     public bool stopFollow;
 
@@ -17,17 +17,17 @@ public class CamaraController : MonoBehaviour
     }
     void Start()
     {
-        lastxPos = transform.position.x;
+        lastPos = transform.position;
     }
 
     void Update()
     {
         if(!stopFollow){
             transform.position = new Vector3(target.position.x,Mathf.Clamp(target.position.y,minHight, maxHight), transform.position.z);
-            float amountToMoveX= transform.position.x - lastxPos;
-            fb.transform.position = fb.position + new Vector3(amountToMoveX,0f,0f);
-            mb.transform.position += new Vector3(amountToMoveX * .5f,0f,0f);   
-            lastxPos = transform.position.x;
+            Vector2 amountToMove= new Vector2(transform.position.x-lastPos.x,transform.position.y-lastPos.y);
+            fb.transform.position = fb.position + new Vector3(amountToMove.x,amountToMove.y,0f);
+            mb.transform.position += new Vector3(amountToMove.x,amountToMove.y,0f)*.7f;   
+            lastPos = transform.position;
         }
 
 

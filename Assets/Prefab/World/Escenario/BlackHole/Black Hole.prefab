@@ -155,6 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f5790dd67fc1c40b31b66f197e8bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1879362587771496713, guid: d95165a4e93330140a9b7ea210fed70e, type: 3}
   intensity: 60
   influenceRange: 5
