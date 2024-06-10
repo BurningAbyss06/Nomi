@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    //public int damage;
+    
     void Update()
     {
         transform.Translate(Time.deltaTime *speed * Vector2.right);
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag=="Player")
         {
-            PlayerHealthController.instance.TakeDamage();
+            PlayerHealthController.instance.TakeDamage(2);
             Destroy(gameObject);
             
         }

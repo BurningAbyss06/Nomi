@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if(knockBackCounter <= 0)
         {
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
+            //AudioManager.instance.PlaySound(2);
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
             Climb();
 
