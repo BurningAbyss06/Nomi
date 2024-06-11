@@ -198,21 +198,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 10
-  doublejumpForce: 6
-  dimensionesCaja: {x: 0, y: 0, z: 0}
+  jumpForce: 11
+  doublejumpForce: 5
+  dimensionesCaja: {x: 0.84, y: 0.16, z: 0}
   rb: {fileID: 5464627626124373558}
   anim: {fileID: 0}
   groundCheck: {fileID: 8436619538730300005}
   WhatIsGround:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 1664
   WhatIsPlatform:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   knockBackLength: 0.25
   knockBackForce: 3
   velocidadEscalar: 5
+  capsule: {fileID: 0}
   stopInput: 0
 --- !u!114 &6886774870108370139
 MonoBehaviour:
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3146b5e6b20364d83f583818ba4770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.2
+  attackCooldown: 1
   bulletPoint: {fileID: 6720118594196773142}
   bullets:
   - {fileID: 0}
