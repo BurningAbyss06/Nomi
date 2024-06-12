@@ -8520,6 +8520,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec754e79c95ea054293337951ea68363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &642518522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3702650601931641056, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
+  m_PrefabInstance: {fileID: 7043322232181256824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab937f50dbd72c4395261dbae43779a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &737177105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12036,6 +12047,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2109618924683361472, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 642518522}
+    - target: {fileID: 2109618924683361472, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseUnoause
+      objectReference: {fileID: 0}
     - target: {fileID: 2525455553112500136, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
       propertyPath: m_Name
       value: LsUIController
@@ -12079,6 +12098,14 @@ PrefabInstance:
     - target: {fileID: 7324239929524164119, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214783034569575687, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 642518522}
+    - target: {fileID: 9214783034569575687, guid: 55931efcadee10449b9d8b5ffa0f1bc3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
