@@ -1,0 +1,27 @@
+Básicos Para un nivel:
+
+-Camara 2.0
+-Raven
+-Grid
+-Escenario
+   -Escaleras
+   -InstaKill
+   -Sakes
+   -Save
+   -Enemigos
+   -Spike
+-Controller
+   -LevelManager
+   -CheckpointController
+   -BulletHolder
+   -UI Canvas
+-Background
+-End
+
+
+
+
+
+
+
+
