@@ -198,9 +198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  move: {fileID: 8300000, guid: 8468faccbd719e04d85949f0bb0743a1, type: 3}
   jumpForce: 11
   doublejumpForce: 5
   dimensionesCaja: {x: 0.84, y: 0.16, z: 0}
+  jump: {fileID: 8300000, guid: 9f921bb6f0c7d3748a1686fbca24d6ad, type: 3}
   rb: {fileID: 5464627626124373558}
   anim: {fileID: 0}
   groundCheck: {fileID: 8436619538730300005}
@@ -240,6 +242,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackClip: {fileID: 8300000, guid: 3145c24392d9fd44381ddb033a6257a2, type: 3}
 --- !u!114 &3760555262103835879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +258,8 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 6
   invincibility: 1
+  hurtClip: {fileID: 8300000, guid: 5cf09d081c4d9d74882d79fd79ba708b, type: 3}
+  dethClip: {fileID: 8300000, guid: 3fdfb79c0d2024544b905c5cda95674d, type: 3}
   deathEffect: {fileID: 8802226808514232796, guid: e73d1d43492ba4d49914853b19d9a017, type: 3}
 --- !u!95 &1949075967089448303
 Animator:

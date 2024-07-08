@@ -39,48 +39,43 @@ public class EnemyHealthController : MonoBehaviour
             sr.color =new Color(sr.color.r, sr.color.g, sr.color.b,1f);
         }
     }
-    //funcion encargada de controlar cuanta vida le queda al jugador y llamar a la funcion para que reaparesca si muere 
     public void TakeDamage()
     {
-            if (isDied) return;
+        if (isDied) return;
         
-            if (invincibleCounter <= 0)
+        if (invincibleCounter <= 0)
+        {
+            currentHealth--;
+            animator.SetTrigger("hurt");
+
+
+            if (currentHealth <= 0)
             {
-                currentHealth--;
-                animator.SetTrigger("hurt");
-
-
-                if (currentHealth <= 0)
-                {
-                    currentHealth = 0;
-                    animator.SetTrigger("die");
+                currentHealth = 0;
+                animator.SetTrigger("die");
 
                 if (GetComponentInParent<EnemyPatrol>() != null)
-                    {
-                        GetComponentInParent<EnemyPatrol>().enabled = false;
-                    }
-
-
-                    if (GetComponent<MeleeEnemyController>() != null)
-                    {
-                        GetComponent<MeleeEnemyController>().enabled = false;
-                    }
-                 
-                    isDied = true;
-
-
-                }
-                else
                 {
-                    invincibleCounter = invincibility;
-                    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
-
-                    //PlayerController.instance.KnockBack();
+                    GetComponentInParent<EnemyPatrol>().enabled = false;
                 }
-                //UIController.instance.UpdateHearts();
-            
-        }
-       
-    }
 
+
+                if (GetComponent<MeleeEnemyController>() != null)
+                {
+                    GetComponent<MeleeEnemyController>().enabled = false;
+                }
+                 
+                isDied = true;
+                gameObject.SetActive(false);
+
+
+            }
+            else
+            {
+                invincibleCounter = invincibility;
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+
+            }            
+        }  
+    }
 }

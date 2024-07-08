@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 82293760453873544}
   - component: {fileID: 3261142283894376508}
   - component: {fileID: 829039334227136364}
+  - component: {fileID: 4802882161362329441}
   m_Layer: 0
   m_Name: Infantryman
   m_TagString: Untagged
@@ -33,10 +34,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 7.29, y: -22.2, z: 0}
-  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
+  m_LocalScale: {x: -2.7, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 120225390711641641}
+  - {fileID: 6634200429559104016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &1210027092778804564
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -185300290, guid: 1642a159d555a92409b24ea503749be9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.28, y: 1.28}
@@ -182,7 +184,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &82293760453873544
 MonoBehaviour:
@@ -234,6 +236,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e92c08ba95bbd448326dd13fed3c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4802882161362329441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714977909596770527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd474b6885882fa42b5f779432bdb7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  controllerGraund: {fileID: 6634200429559104016}
+  dis: 1
+  movDer: 1
 --- !u!1 &6996897193470810123
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +278,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0763, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8695661737689348118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8637570186566802708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6634200429559104016}
+  m_Layer: 0
+  m_Name: Controller_Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6634200429559104016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637570186566802708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.223, y: -0.286, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

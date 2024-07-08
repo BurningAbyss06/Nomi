@@ -14,6 +14,7 @@ public class InfantrymanHealthController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     public bool isDied = false;
+    [SerializeField] private AudioClip hurtClip, deathClip;
 
     public void Awake()
     {
@@ -46,12 +47,14 @@ public class InfantrymanHealthController : MonoBehaviour
         {
             currentHealth--;
             anim.SetTrigger("hurt");
+            SFXController.instance.PlaySound(deathClip);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 isDied = true;
                 anim.SetTrigger("die");
+                SFXController.instance.PlaySound(hurtClip);
                 Destroy(gameObject);
             }
             else

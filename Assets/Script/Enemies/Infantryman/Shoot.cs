@@ -14,6 +14,7 @@ public class Shoot : MonoBehaviour
    public float lastshoot;
    public float tiempoEspera;
    private Animator anim;
+   [SerializeField] private AudioClip shootClip;
 
    private void Start()
    {
@@ -30,6 +31,7 @@ public class Shoot : MonoBehaviour
             {
                 lastshoot= Time.time;
                 anim.SetTrigger("Shoot");
+                SFXController.instance.PlaySound(shootClip);
                 Invoke(nameof(Disparo),tiempoEspera);
             }
         }

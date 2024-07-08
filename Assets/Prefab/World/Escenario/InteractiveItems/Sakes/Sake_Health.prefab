@@ -123,6 +123,8 @@ MonoBehaviour:
   IsSake: 0
   isHeal: 1
   sakeE: {fileID: 8543143090443414201, guid: 70c64d27b368cd042b231cb24679cda6, type: 3}
+  sakeClip: {fileID: 8300000, guid: 5b893ef8facea63428da116766dedd2f, type: 3}
+  healClip: {fileID: 8300000, guid: 6e3d97eaa71c48b4fa8d05373b52820e, type: 3}
 --- !u!58 &2309630526687972959
 CircleCollider2D:
   m_ObjectHideFlags: 0

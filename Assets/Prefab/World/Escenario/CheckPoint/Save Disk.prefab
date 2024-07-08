@@ -136,3 +136,4 @@ MonoBehaviour:
   sp: {fileID: 2748821519758175206}
   cpon: {fileID: -2096659106, guid: 7a96bd133be3312438ee7328095f78dc, type: 3}
   cpoff: {fileID: -953767746, guid: 4ce87b1451b5fc64692523046554bbd5, type: 3}
+  saveClip: {fileID: 8300000, guid: 5f2e1b8c22ebed142b71d5f36ce2be7f, type: 3}

@@ -7,9 +7,10 @@ public class Pickup : MonoBehaviour
 {
 
     public bool IsSake, isHeal;
-
     private bool isCollected;
     public GameObject sakeE;
+    [SerializeField] private AudioClip sakeClip;
+    [SerializeField] private AudioClip healClip;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +22,7 @@ public class Pickup : MonoBehaviour
                 UIController.instance.UpdateSakeCount();    
                 Instantiate(sakeE,transform.position, transform.rotation);                 
                 isCollected = true;
+                SFXController.instance.PlaySound(sakeClip);
                 Destroy(gameObject); 
             }
             if (isHeal)
@@ -30,6 +32,7 @@ public class Pickup : MonoBehaviour
                     PlayerHealthController.instance.HealPlayer();
                     Instantiate(sakeE,transform.position, transform.rotation);                 
                     isCollected=true;
+                    SFXController.instance.PlaySound(healClip);
                     Destroy(gameObject);
                 }
             }

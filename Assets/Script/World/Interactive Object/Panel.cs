@@ -8,7 +8,8 @@ public class Panel : MonoBehaviour
     private SpriteRenderer sr;
     public Sprite panelactivate;
     private bool hasSwitched;
-    public bool deactivateOnPanel;  
+    public bool deactivateOnPanel; 
+    [SerializeField] private AudioClip desactivatedClip;
     void Start()
     {
         sr=GetComponent<SpriteRenderer>();  
@@ -27,6 +28,7 @@ public class Panel : MonoBehaviour
 
             }
             sr.sprite=panelactivate;
+            SFXController.instance.PlaySound(desactivatedClip);
             hasSwitched=true;
         }
     }

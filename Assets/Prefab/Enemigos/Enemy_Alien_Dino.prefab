@@ -326,3 +326,4 @@ MonoBehaviour:
   invincibility: 1
   sr: {fileID: 7162200079402170366}
   isDied: 0
+  hurtClip: {fileID: 8300000, guid: 98e17fc57068ef04e8fe4db7efd1199e, type: 3}

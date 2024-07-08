@@ -13,6 +13,7 @@ public class PlayerHealthController : MonoBehaviour
     public float invincibility;
     private float invincibleCounter;
     private SpriteRenderer sr;
+    [SerializeField] private AudioClip hurtClip,dethClip;
 
     public GameObject deathEffect;
     public void Awake()
@@ -43,12 +44,14 @@ public class PlayerHealthController : MonoBehaviour
         if(invincibleCounter <= 0)
         {
             currentHealth -= damage;
+            SFXController.instance.PlaySound(hurtClip);
             PlayerController.instance.anim.SetTrigger("Hurt");
 
             if(currentHealth <= 0)
             {
                 currentHealth=0;
 
+                SFXController.instance.PlaySound(dethClip);
                 Instantiate(deathEffect,PlayerController.instance.transform.position,PlayerController.instance.transform.rotation);
                 LevelManager.instance.RespawnPlayer();
             }else

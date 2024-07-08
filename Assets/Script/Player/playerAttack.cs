@@ -9,6 +9,7 @@ public class playerAttack : MonoBehaviour
     [SerializeField]  private Transform bulletPoint;
     [SerializeField]  private GameObject[] bullets; 
     private SpriteRenderer pr;
+    [SerializeField] private AudioClip attackClip;
 
 
     void Awake()
@@ -50,6 +51,7 @@ public class playerAttack : MonoBehaviour
         
         bullet.GetComponent<proyectile>().SetDirection(Mathf.Sign(shootDirection.x));
         anim.SetTrigger("attack");
+        SFXController.instance.PlaySound(attackClip);
         cooldownTimer = 0;
 
     }

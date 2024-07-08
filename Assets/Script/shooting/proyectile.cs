@@ -50,7 +50,7 @@ public class proyectile : MonoBehaviour
         }
 
         if (collision.name.Contains("Cthulu") ||
-            collision.name.Contains("Android"))
+            collision.name.Contains("Android")) 
         {
             if (collision.GetComponent<EnemyHealthController>().isDied)
             {
@@ -63,7 +63,7 @@ public class proyectile : MonoBehaviour
         }
         
 
-        if(collision.name.Contains("Enemy_Alien_Dino")||collision.name.Contains("Infantryman"))
+        if(collision.name.Contains("Enemy_Alien_Dino")||collision.name.Contains("Infantryman") || collision.name.Contains("Swordsman"))
         {
             if(collision.GetComponent<DinoHealthController>())
             {
@@ -85,6 +85,17 @@ public class proyectile : MonoBehaviour
                 else
                 {
                     collision.GetComponent<InfantrymanHealthController>().TakeDamage();
+                }
+            }
+            if (collision.GetComponent<SwordsmanHealthController>())
+            {
+                if (collision.GetComponent<SwordsmanHealthController>().isDied)
+                {
+                    return;
+                }
+                else
+                {
+                    collision.GetComponent<SwordsmanHealthController>().TakeDamage();
                 }
             }
         }

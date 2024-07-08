@@ -38,7 +38,7 @@ public class LsManager : MonoBehaviour
     }
 
     public IEnumerator LoadLevelCo(){
-        LsUIManager.instance.FadeToBlack();
+        //LsUIManager.instance.FadeToBlack();
         yield return new WaitForSeconds((1f/LsUIManager.instance.fadeSpeed)+ .25f);
         SceneManager.LoadScene(player.currentPoint.levelName);
     }

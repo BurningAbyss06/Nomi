@@ -9,8 +9,6 @@ public class CheckpointController : MonoBehaviour
     public Checkpoint[] checkpoints;
 
     public Vector3 spawnPoint;
-
-    public CapsuleCollider2D coll;
     void Awake()
     {
         instance = this;
@@ -33,10 +31,9 @@ public class CheckpointController : MonoBehaviour
     }
 
     //setea el spawn point en la posicion del checkpoint tocado 
-    public void SetSpawnPoint(Vector3 newSpawnPoint, CapsuleCollider2D newCollider)
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
     {
         spawnPoint = newSpawnPoint;
-        coll = newCollider;
 
     }
 }

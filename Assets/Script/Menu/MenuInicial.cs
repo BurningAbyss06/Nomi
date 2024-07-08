@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuInicial : MonoBehaviour
 {
-    public string startScene, continueScene;
+    public string startScene, continueScene, controlesScene;
 
     public GameObject continueButton;
+    [SerializeField] private AudioClip selectClip, pressClip;
 
     public void Start()
     {
@@ -25,13 +26,20 @@ public class MenuInicial : MonoBehaviour
 
     public void Jugar()
     {   
+        SFXController.instance.PlaySound(selectClip);
         SceneManager.LoadScene(startScene);
         PlayerPrefs.DeleteAll();
     }
 
     public void ContinueGame()
     {
+        SFXController.instance.PlaySound(pressClip);
         SceneManager.LoadScene(continueScene);
+    }
+    public void Controles()
+    {
+        SFXController.instance.PlaySound(pressClip);
+        SceneManager.LoadScene(controlesScene);
     }
 
     public void Salir()

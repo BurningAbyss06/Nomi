@@ -9,9 +9,9 @@ public class LsUIManager : MonoBehaviour
     public static LsUIManager instance;
     
     [Header("Transicion")]
-    public UnityEngine.UI.Image fadeScreen;
+   // public UnityEngine.UI.Image fadeScreen;
     public float fadeSpeed;
-    private bool shouldFateToBlack, shouldFateFromBlack; 
+    //private bool shouldFateToBlack, shouldFateFromBlack; 
 
     [Header("Nombre de Los Niveles")]
     public GameObject levelInfoPanel;
@@ -25,12 +25,12 @@ public class LsUIManager : MonoBehaviour
     }
     void Start()
     {   
-        FadeFromBlack();
+       //FadeFromBlack();
     }
 
     void Update()
     {
-        if (shouldFateToBlack)
+        /*if (shouldFateToBlack)
         {
             fadeScreen.color= new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a,1f,fadeSpeed * Time.deltaTime));
             if(fadeScreen.color.a==1f)
@@ -46,10 +46,10 @@ public class LsUIManager : MonoBehaviour
             {
                 shouldFateFromBlack = false;
             }
-        }        
+        } */       
     }
 
-    public void FadeToBlack()
+   /* public void FadeToBlack()
     {
         shouldFateToBlack = true;
         shouldFateFromBlack = false;
@@ -58,7 +58,7 @@ public class LsUIManager : MonoBehaviour
     {
         shouldFateToBlack = false;
         shouldFateFromBlack = true;
-    }
+    }*/
     public void ShowLevelInfo(MapPoint levelInfo)
     {
         levelName.text= levelInfo.levelName;

@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movimiento")]
     public float moveSpeed;
-
+    [SerializeField] private AudioClip move;
 
     [Header("Salto")]
     private bool canDoubleJump;
     public float jumpForce;
     public float doublejumpForce;
     [SerializeField] public Vector3 dimensionesCaja;
+    [SerializeField] private AudioClip jump;
+
 
     [Header("Componentes")]
     public Rigidbody2D rb;
@@ -62,7 +64,6 @@ public class PlayerController : MonoBehaviour
         if(knockBackCounter <= 0)
         {
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"),rb.velocity.y);
-            //AudioManager.instance.PlaySound(2);
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, WhatIsGround);
             Climb();
 
@@ -87,12 +88,16 @@ public class PlayerController : MonoBehaviour
                     if(isGrounded)
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpForce );
+                        SFXController.instance.PlaySound(jump);
+
 
                     }else
                     {
                         if(canDoubleJump)
                         {
-                            rb.velocity = new Vector2(rb.velocity.x, doublejumpForce );
+                            rb.velocity = new Vector2(rb.velocity.x, doublejumpForce);
+                            SFXController.instance.PlaySound(jump);
+
                             canDoubleJump = false;
                         }
                     } 

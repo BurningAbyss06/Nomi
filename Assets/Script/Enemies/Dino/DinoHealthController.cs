@@ -14,6 +14,7 @@ public class DinoHealthController : MonoBehaviour
     public SpriteRenderer sr;
     private Animator anim;
     public bool isDied = false;
+    [SerializeField] private AudioClip hurtClip;
 
     public void Awake()
     {
@@ -45,7 +46,7 @@ public class DinoHealthController : MonoBehaviour
         if (invincibleCounter <= 0)
         {
             currentHealth--;
-
+            SFXController.instance.PlaySound(hurtClip);
 
             if (currentHealth <= 0)
             {

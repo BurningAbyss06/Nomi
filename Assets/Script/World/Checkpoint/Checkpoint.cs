@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour
 {
     public SpriteRenderer sp;
     public Sprite cpon,cpoff;
+    [SerializeField] private AudioClip saveClip;
 
     //Se encarga de cambiar el sprite de el checkpoint y de llamar a la funcion que desactiva los otros checkpoints y la que guarda
     //la posicion del checkpoint en la que reaparecera el jugador
@@ -17,7 +18,8 @@ public class Checkpoint : MonoBehaviour
         {
             CheckpointController.instance.DesactivateCheckpoints();
             sp.sprite = cpon;
-            CheckpointController.instance.SetSpawnPoint(transform.position,other.GetComponent<CapsuleCollider2D>());
+            SFXController.instance.PlaySound(saveClip);
+            CheckpointController.instance.SetSpawnPoint(transform.position);
         }
     }
 
